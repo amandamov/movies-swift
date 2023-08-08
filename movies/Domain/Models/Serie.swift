@@ -1,22 +1,23 @@
 import Foundation
 
-struct Movie: Codable, Identifiable, Hashable {
+struct Serie: Codable, Identifiable, Hashable {
     let id: Int
-    let title: String
+    let name: String
     let poster_path: String?
     let overview: String
     let vote_average: Double
 }
 
-extension Movie {
+extension Serie {
     func toMovieSerie() -> MovieSerie {
         MovieSerie(
             id: id,
-            title: title,
+            title: name,
             posterPath: poster_path,
             overview: overview,
             voteAverage: vote_average
         )
     }
 }
+
 
