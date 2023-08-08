@@ -2,12 +2,14 @@
 //import SwiftUI
 //
 //struct MainView: View {
-//    private let viewModelMovie : GridViewModel
+//    private let viewModelMovie : HomeViewModel
 //    private let viewModelTV : TVListViewModel
+//    private let searchRepository : SearchRepositoryImpl
 //
-//    init(viewModelMovie : GridViewModel, viewModelTV : TVListViewModel) {
+//    init(viewModelMovie : HomeViewModel, viewModelTV : TVListViewModel, searchRepository : SearchRepositoryImpl) {
 //        self.viewModelMovie = viewModelMovie
 //        self.viewModelTV = viewModelTV
+//        self.searchRepository = searchRepository
 //    }
 //
 //    var body: some View {
@@ -16,24 +18,24 @@
 //            .tabItem {
 //                Label("Movies", systemImage: "popcorn.fill")
 //            }
-////        TabView {
-////            MovieListView()
-////                .environmentObject(viewModelMovie)
-////                .tabItem {
-////                    Label("Movies", systemImage: "popcorn.fill")
-////                }
-////            TVListView()
-////                .environmentObject(viewModelTV)
-////                .tabItem {
-////                    Label("TV", systemImage: "play.tv.fill")
-////                }
-////        }
+//        TabView {
+//            HomeView()
+//                .environmentObject(viewModelMovie)
+//                .tabItem {
+//                    Label("Movies", systemImage: "popcorn.fill")
+//                }
+//            TVListView()
+//                .environmentObject(viewModelTV)
+//                .tabItem {
+//                    Label("TV", systemImage: "play.tv.fill")
+//                }
+//        }
 //    }
 //}
+
 //
-////
-////struct MainViewPreview: PreviewProvider {
-////    static var previews: some View {
-////        MainView()
-////    }
-////}
+//struct MainViewPreview: PreviewProvider {
+//    static var previews: some View {
+//        MainView()
+//    }
+//}

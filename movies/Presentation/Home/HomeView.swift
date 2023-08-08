@@ -19,17 +19,28 @@ struct HomeView: View {
         NavigationStack {
             ZStack(alignment: .bottomTrailing) {
                 VStack(spacing: 20) {
+                    Text("Watch List")
+                        .foregroundColor(.white)
+                        .fontWeight(.semibold)
+                        .font(.largeTitle)
+                        .font(.system(size: 22))
                     textfield()
+                    Picker("Movies or Series?", selection: $state) {
+                        Text("Movies").tag(HomeState.movies)
+                        Text("Series").tag(HomeState.series)
+                    }.pickerStyle(.segmented)
                     list()
                 }
                 .padding()
-                button()
-                    .padding([.bottom, .trailing], 20)
             }
             .toolbar(.hidden, for: .navigationBar)
             .background {
                 Color("principal")
                     .edgesIgnoringSafeArea(.all)
+            }.onAppear {
+                Task {
+                   await viewModel.listTopRated()
+                }
             }
         }
     }
@@ -71,33 +82,17 @@ private extension HomeView {
             }
         }
     }
-    
-    func button() -> some View {
-        ZStack {
-            Circle()
-                .foregroundColor(.red)
-                .frame(width: 50, height: 50)
-            Button("button") {
-                switch state {
-                case .movies:
-                    state = .series
-                case .series:
-                    state = .movies
-                }
-                search()
-            }
-            .foregroundColor(.blue)
-        }
-    }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         let searcMovieshDataSource = SearchMoviesDataSourceImpl()
         let searcSerieshDataSource = SearchSeriesDataSourceImpl()
+        let listTopRatedDataSource = ListTopRatedDataSourceImpl()
         let searchRepository = SearchRepositoryImpl(
             searchMoviesDataSource: searcMovieshDataSource,
-            searchSeriesDataSource: searcSerieshDataSource
+            searchSeriesDataSource: searcSerieshDataSource,
+            listTopRatedDataSource: listTopRatedDataSource
         )
         let viewModel = HomeViewModel(searchRepository: searchRepository)
         return HomeView().environmentObject(viewModel)

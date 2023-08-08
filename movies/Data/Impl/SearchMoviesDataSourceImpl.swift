@@ -26,10 +26,17 @@ final class SearchMoviesDataSourceImpl: SearchMoviesDataSourceProtocol {
 
         let (data, _) = try await URLSession.shared.data(for: request)
         let response = try JSONDecoder().decode(MoviesResponse.self, from: data)
+        
         let movies = response.results
         return movies
     }
 }
+
+//do {
+//heroes = try JSONDecoder().decode([Hero].self, from: data)
+//} catch {
+//print(error)
+//}
 
 private struct MoviesResponse: Codable {
     let results: [Movie]

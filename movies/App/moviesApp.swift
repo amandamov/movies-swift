@@ -6,10 +6,13 @@ struct moviesApp: App {
         WindowGroup {
             let searchMoviesDataSource = SearchMoviesDataSourceImpl()
             let searchSeriesDataSource = SearchSeriesDataSourceImpl()
+            let listTopRatedDataSource = ListTopRatedDataSourceImpl()
             let searchRepository = SearchRepositoryImpl(
                 searchMoviesDataSource: searchMoviesDataSource,
-                searchSeriesDataSource: searchSeriesDataSource
+                searchSeriesDataSource: searchSeriesDataSource,
+                listTopRatedDataSource: listTopRatedDataSource
             )
+
             let viewModel = HomeViewModel(searchRepository: searchRepository)
 
             HomeView()

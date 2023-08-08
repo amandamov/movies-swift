@@ -29,4 +29,15 @@ final class HomeViewModel : ObservableObject {
             print(error)
         }
     }
+    
+    func listTopRated() async {
+        do {
+            let shows = try await searchRepository.listTopRated()
+            DispatchQueue.main.async {
+                self.items = shows
+            }
+        } catch {
+            print(error)
+        }
+    }
 }

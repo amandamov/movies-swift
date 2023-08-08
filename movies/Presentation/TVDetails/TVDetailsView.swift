@@ -52,10 +52,10 @@
 //        }
 //    }
 //}
-//
-////struct TVDetailsView_Previews: PreviewProvider {
-////    static var previews: some View {
-////        TVDetailsView(tv: TV.preview)
-////    }
-////}
-//
+
+//struct TVDetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TVDetailsView(tv: TV.preview)
+//    }
+//}
+
