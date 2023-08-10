@@ -8,28 +8,35 @@ final class HomeViewModel : ObservableObject {
         self.searchRepository = searchRepository
     }
 
-    func searchMmovies(query: String) async {
-        do {
-            let movies = try await searchRepository.searchMovies(query: query)
-            DispatchQueue.main.async {
-                self.items = movies
+    func searchMovies(query: String, completion: @escaping () -> () = {}) {
+        DispatchQueue.main.async {
+            Task {
+                do {
+                    let movies = try await self.searchRepository.searchMovies(query: query)
+                        self.items = movies
+                        completion()
+                } catch {
+                    print(error)
+                }
             }
-        } catch {
-            print(error)
         }
     }
 
-    func searchSeries(query: String) async {
-        do {
-            let series = try await searchRepository.searchSeries(query: query)
-            DispatchQueue.main.async {
-                self.items = series
+    func searchSeries(query: String, completion: @escaping () -> () = {}) {
+        DispatchQueue.main.async {
+            Task {
+                do {
+                    let series = try await self.searchRepository.searchSeries(query: query)
+                        self.items = series
+                    completion()
+                } catch  {
+                    print(error)
+                }
             }
-        } catch {
-            print(error)
         }
     }
     
+    //TODO: create new viewModel - listTopRatedViewModel
     func listTopRated() async {
         do {
             let shows = try await searchRepository.listTopRated()

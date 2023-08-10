@@ -27,6 +27,9 @@ final class SearchSeriesDataSourceImpl: SearchSeriesDataSourceProtocol {
         let (data, _) = try await URLSession.shared.data(for: request)
         let response = try JSONDecoder().decode(SeriesResponse.self, from: data)
         let series = response.results
+        
+        guard series.count > 0 else {throw SearchError.ItemNotFound}
+        
         return series
     }
 }

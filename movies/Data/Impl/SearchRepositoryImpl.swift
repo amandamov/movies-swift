@@ -20,7 +20,7 @@ struct SearchRepositoryImpl: SearchRepositoryProtocol {
         let series = try await searchSeriesDataSource.searchSeries(query: query)
         return series.map { $0.toMovieSerie() }
     }
-    
+
     func listTopRated() async throws -> [MovieSerie] {
         let shows = try await listTopRatedDataSource.listTopRated()
         return shows.map { $0.toMovieSerie() }

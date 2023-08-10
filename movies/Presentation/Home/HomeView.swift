@@ -19,7 +19,7 @@ struct HomeView: View {
         NavigationStack {
             ZStack(alignment: .bottomTrailing) {
                 VStack(spacing: 20) {
-                    Text("Watch List")
+                    Text("What 2'Watch")
                         .foregroundColor(.white)
                         .fontWeight(.semibold)
                         .font(.largeTitle)
@@ -51,9 +51,9 @@ private extension HomeView {
         Task {
             switch state {
             case .movies:
-                await viewModel.searchMmovies(query: text)
+                viewModel.searchMovies(query: text)
             case .series:
-                await viewModel.searchSeries(query: text)
+                viewModel.searchSeries(query: text)
             }
         }
     }

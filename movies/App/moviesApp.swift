@@ -4,6 +4,7 @@ import SwiftUI
 struct moviesApp: App {
     var body: some Scene {
         WindowGroup {
+            Text("")
             let searchMoviesDataSource = SearchMoviesDataSourceImpl()
             let searchSeriesDataSource = SearchSeriesDataSourceImpl()
             let listTopRatedDataSource = ListTopRatedDataSourceImpl()

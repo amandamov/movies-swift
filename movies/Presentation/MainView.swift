@@ -2,37 +2,35 @@
 //import SwiftUI
 //
 //struct MainView: View {
-//    private let viewModelMovie : HomeViewModel
-//    private let viewModelTV : TVListViewModel
+//    private let viewModel : HomeViewModel
 //    private let searchRepository : SearchRepositoryImpl
 //
-//    init(viewModelMovie : HomeViewModel, viewModelTV : TVListViewModel, searchRepository : SearchRepositoryImpl) {
-//        self.viewModelMovie = viewModelMovie
-//        self.viewModelTV = viewModelTV
+//    init(viewModel : HomeViewModel, searchRepository : SearchRepositoryImpl) {
+//        self.viewModel = viewModel
 //        self.searchRepository = searchRepository
 //    }
 //
 //    var body: some View {
 //        HomeView()
-//            .environmentObject(viewModelMovie)
+//            .environmentObject(viewModel)
 //            .tabItem {
-//                Label("Movies", systemImage: "popcorn.fill")
+//                Label("The Best", systemImage: "popcorn.fill")
 //            }
 //        TabView {
 //            HomeView()
-//                .environmentObject(viewModelMovie)
+//                .environmentObject(viewModel)
 //                .tabItem {
-//                    Label("Movies", systemImage: "popcorn.fill")
+//                    Label("Search", systemImage: "search.fill")
 //                }
-//            TVListView()
-//                .environmentObject(viewModelTV)
+//            TopRatedView()
+//                .environmentObject(viewModel)
 //                .tabItem {
 //                    Label("TV", systemImage: "play.tv.fill")
 //                }
 //        }
 //    }
 //}
-
+//
 //
 //struct MainViewPreview: PreviewProvider {
 //    static var previews: some View {

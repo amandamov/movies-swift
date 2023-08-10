@@ -1,6 +1,13 @@
 import Foundation
 
 final class SearchMoviesDataSourceImpl: SearchMoviesDataSourceProtocol {
+    
+    private let session: NetworkFetchingProtocol
+    
+    init(session: NetworkFetchingProtocol = URLSession.shared) {
+        self.session = session
+    }
+    
     func searchMovies(query: String) async throws -> [Movie] {
         let baseURL = "https://api.themoviedb.org/3/search/movie"
         guard var urlComponents = URLComponents(string: baseURL) else {
@@ -24,20 +31,15 @@ final class SearchMoviesDataSourceImpl: SearchMoviesDataSourceProtocol {
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
 
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let (data, _) = try await session.data(url: request)
         let response = try JSONDecoder().decode(MoviesResponse.self, from: data)
         
         let movies = response.results
+        
+        guard movies.count > 0 else {throw SearchError.ItemNotFound}
+        
         return movies
     }
 }
 
-//do {
-//heroes = try JSONDecoder().decode([Hero].self, from: data)
-//} catch {
-//print(error)
-//}
 
-private struct MoviesResponse: Codable {
-    let results: [Movie]
-}
