@@ -28,7 +28,7 @@ struct DetailsView: View {
                         .fontWeight(.semibold)
                         .font(.largeTitle)
                         .font(.system(size: 20))
-                    Text("Vote avarage: \(item.voteAverage, specifier: "%.1f")")
+                    Text("Vote average: \(item.voteAverage, specifier: "%.1f")")
                         .foregroundColor(.white)
                     Text(item.overview)
                         .foregroundColor(.white)

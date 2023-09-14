@@ -111,6 +111,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9741EE112AA88A6A00182E60 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				977CDB432A8504E90076B19D /* NetworkFecthingProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		977CDB3E2A837B650076B19D /* TopRated */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +224,7 @@
 		97B0CAEE2A799351007BFA61 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				9741EE112AA88A6A00182E60 /* Protocols */,
 				97B0CAF02A799365007BFA61 /* Models */,
 			);
 			path = Domain;
@@ -236,7 +245,6 @@
 		97B0CAF12A79937B007BFA61 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				977CDB432A8504E90076B19D /* NetworkFecthingProtocol.swift */,
 				97B0CAF42A7993D5007BFA61 /* SearchRepositoryProtocol.swift */,
 				97B0CAF22A7993C2007BFA61 /* SearchMoviesDataSourceProtocol.swift */,
 				97BA48272A80FDE600FCA6A6 /* SearchSeriesDataSourceProtocol.swift */,
